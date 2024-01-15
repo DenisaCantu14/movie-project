@@ -6,8 +6,8 @@ export class UserEntity {
   id: number;
 
   @Column()
-  phone_number: string;
+  email: string;
 
   @Column()
-  email: string;
+  phone_number: string;
 }
