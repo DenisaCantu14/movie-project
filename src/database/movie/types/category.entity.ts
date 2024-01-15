@@ -6,6 +6,7 @@ import {
   JoinTable,
 } from 'typeorm';
 import { MovieEntity } from './movie.entity';
+import { UserEntity } from '../../user/types/user.entity';
 
 @Entity('categories')
 export class Category {
@@ -18,4 +19,8 @@ export class Category {
   @ManyToMany(() => MovieEntity, (movie) => movie.categories)
   @JoinTable()
   movies: MovieEntity[];
+
+  @ManyToMany(() => UserEntity, (user) => user.categories)
+  @JoinTable()
+  users: UserEntity[];
 }

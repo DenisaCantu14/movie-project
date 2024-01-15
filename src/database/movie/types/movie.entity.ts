@@ -9,6 +9,7 @@ import {
 import { Category } from './category.entity';
 import { Tag } from './tag.entity';
 import { Photo } from './photo.entity';
+import { UserEntity } from '../../user/types/user.entity';
 
 @Entity('movies')
 export class MovieEntity {
@@ -44,4 +45,8 @@ export class MovieEntity {
   @OneToMany(() => Photo, (photo) => photo.movie)
   @JoinTable()
   photos: Photo[];
+
+  @ManyToMany(() => UserEntity, (user) => user.movies)
+  @JoinTable()
+  users: UserEntity[];
 }

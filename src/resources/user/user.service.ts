@@ -13,4 +13,17 @@ export class UserService {
   async getAll(): Promise<UserEntity[]> {
     return await this.userRepository.find();
   }
+
+  async getById(id: number): Promise<UserEntity> {
+    return await this.userRepository.findOne({
+      where: { id },
+      relations: [
+        'categories',
+        'movies',
+        'movies.categories',
+        'movies.tags',
+        'movies.photos',
+      ],
+    });
+  }
 }
