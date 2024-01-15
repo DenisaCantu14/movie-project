@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { MovieEntity } from './movie.entity';
+import { Movie } from './movie.entity';
 
 @Entity('photos')
 export class Photo {
@@ -9,6 +9,6 @@ export class Photo {
   @Column({ unique: true })
   url: string;
 
-  @ManyToOne(() => MovieEntity, (movie) => movie.photos)
-  movie: MovieEntity;
+  @ManyToOne(() => Movie, (movie) => movie.photos)
+  movie: Movie;
 }

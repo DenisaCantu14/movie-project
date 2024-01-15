@@ -1,5 +1,5 @@
-import { MovieEntity } from '../../../database/movie/types/movie.entity';
+import { Movie } from '../entity/movie.entity';
 
 export class AllMoviesResult {
-  list: MovieEntity[];
+  list: Movie[];
 }

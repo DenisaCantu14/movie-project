@@ -3,16 +3,16 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Category } from './category.entity';
 import { Tag } from './tag.entity';
 import { Photo } from './photo.entity';
-import { UserEntity } from '../../user/types/user.entity';
 
 @Entity('movies')
-export class MovieEntity {
+export class Movie {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -34,19 +34,13 @@ export class MovieEntity {
   @Column({ nullable: true })
   meta_description: string;
 
-  @ManyToMany(() => Category, (category) => category.movies)
-  @JoinTable()
-  categories: Category[];
+  @ManyToOne(() => Category, (category) => category.movies)
+  category: Category;
 
-  @ManyToMany(() => Tag, (tag) => tag.movies)
+  @ManyToMany(() => Tag)
   @JoinTable()
-  tags: Category[];
+  tags: Tag[];
 
   @OneToMany(() => Photo, (photo) => photo.movie)
-  @JoinTable()
   photos: Photo[];
-
-  @ManyToMany(() => UserEntity, (user) => user.movies)
-  @JoinTable()
-  users: UserEntity[];
 }

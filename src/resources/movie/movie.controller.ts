@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import { AllMoviesResult } from './results/all-movies.result';
-import { MovieEntity } from '../../database/movie/types/movie.entity';
+import { Movie } from './entity/movie.entity';
 
 @Controller()
 export class MovieController {
@@ -17,14 +17,12 @@ export class MovieController {
   @Get('category/:categoryName')
   async findAllByCategory(
     @Param('categoryName') categoryName: string,
-  ): Promise<MovieEntity[]> {
+  ): Promise<Movie[]> {
     return this.movieService.getAllByCategory(categoryName);
   }
 
   @Get('tag/:tagName')
-  async findAllByTag(
-    @Param('tagName') tagName: string,
-  ): Promise<MovieEntity[]> {
+  async findAllByTag(@Param('tagName') tagName: string): Promise<Movie[]> {
     return this.movieService.getAllByTag(tagName);
   }
 }

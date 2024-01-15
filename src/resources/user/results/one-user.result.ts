@@ -1,5 +1,5 @@
-import { UserEntity } from '../../../database/user/types/user.entity';
+import { User } from '../entity/user.entity';
 
 export class OneUserResult {
-  data: UserEntity;
+  data: User;
 }
