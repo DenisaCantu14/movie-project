@@ -11,7 +11,9 @@ export class MovieService {
   ) {}
 
   async getAll(): Promise<MovieEntity[]> {
-    return this.movieRepository.find({ relations: ['categories'] });
+    return this.movieRepository.find({
+      relations: ['categories', 'tags', 'photos'],
+    });
   }
 
   async getAllByCategory(categoryName: string): Promise<MovieEntity[]> {
