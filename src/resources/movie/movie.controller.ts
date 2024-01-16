@@ -15,14 +15,14 @@ export class MovieController {
   }
 
   @Get('category/:categoryName')
-  async findAllByCategory(
+  async getAllByCategory(
     @Param('categoryName') categoryName: string,
   ): Promise<Movie[]> {
     return this.movieService.getAllByCategory(categoryName);
   }
 
   @Get('tag/:tagName')
-  async findAllByTag(@Param('tagName') tagName: string): Promise<Movie[]> {
+  async getAllByTag(@Param('tagName') tagName: string): Promise<Movie[]> {
     return this.movieService.getAllByTag(tagName);
   }
 }

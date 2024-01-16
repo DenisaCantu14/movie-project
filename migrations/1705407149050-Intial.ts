@@ -17,7 +17,7 @@ export class Intial1705407149050 implements MigrationInterface {
       `CREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, CONSTRAINT "UQ_8b0be371d28245da6e4f4b61878" UNIQUE ("name"))`,
     );
     await queryRunner.query(
-      `CREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "phone_number" varchar NOT NULL, CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"))`,
+      `CREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "phone_number" varchar NOT NULL, "theme" varchar NOT NULL, CONSTRAINT "UQ_97672ac88f789774dd47f7c8be3" UNIQUE ("email"))`,
     );
     await queryRunner.query(
       `CREATE TABLE "movies_tags_tags" ("moviesId" integer NOT NULL, "tagsId" integer NOT NULL, PRIMARY KEY ("moviesId", "tagsId"))`,
@@ -122,10 +122,10 @@ export class Intial1705407149050 implements MigrationInterface {
     );
 
     await queryRunner.query(
-      `INSERT INTO Users (email, phone_number) VALUES ('michael@gmail.com', '00000000');`,
+      `INSERT INTO Users (email, phone_number, theme) VALUES ('michael@gmail.com', '00000000', "dark");`,
     );
     await queryRunner.query(
-      `INSERT INTO Users (email, phone_number) VALUES ('jack@gmail.com', '12121212');`,
+      `INSERT INTO Users (email, phone_number, theme) VALUES ('jack@gmail.com', '12121212', "light");`,
     );
 
     await queryRunner.query(

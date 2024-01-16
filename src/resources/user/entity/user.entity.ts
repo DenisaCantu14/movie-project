@@ -26,4 +26,7 @@ export class User {
   @ManyToMany(() => Movie)
   @JoinTable()
   movies: Movie[];
+
+  @Column({ default: 'light' })
+  theme: string;
 }

@@ -20,7 +20,7 @@ export class UserService {
       relations: [
         'categories',
         'movies',
-        'movies.categories',
+        'movies.category',
         'movies.tags',
         'movies.photos',
       ],
