@@ -2,16 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Movie } from './entity/movie.entity';
-import { Category } from './entity/category.entity';
 
 @Injectable()
 export class MovieService {
   constructor(
     @InjectRepository(Movie)
     private movieRepository: Repository<Movie>,
-
-    @InjectRepository(Category)
-    private categoryRepository: Repository<Category>,
   ) {}
 
   async getAll(): Promise<Movie[]> {
